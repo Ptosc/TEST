@@ -1,20 +1,25 @@
 import streamlit as st
 import streamlit_authenticator as stauth
+from dotenv import load_dotenv
+import os
 
 st.title("Test Login App")
 
-# 🔑 Setup für Google OAuth
+# 🔑 Lokal: .env laden (nur für lokale Tests)
+load_dotenv()
+
+# 🔑 Credentials aus st.secrets oder .env holen
 credentials = {
-    "client_id": "REMOVED",
-    "client_secret": "REMOVED",
-    "redirect_uri": "https://pqw8l7hrekvttzngm8fz8k.streamlit.app"
+    "client_id": st.secrets.get("GOOGLE_CLIENT_ID") or os.getenv("GOOGLE_CLIENT_ID"),
+    "client_secret": st.secrets.get("GOOGLE_CLIENT_SECRET") or os.getenv("GOOGLE_CLIENT_SECRET"),
+    "redirect_uri": st.secrets.get("GOOGLE_REDIRECT_URI") or os.getenv("GOOGLE_REDIRECT_URI")
 }
 
 # Authenticator initialisieren
 authenticator = stauth.Authenticate(
     credentials=credentials,
     cookie_name="login_cookie",
-    key="some_random_key"
+    key=st.secrets.get("COOKIE_KEY") or os.getenv("COOKIE_KEY")
 )
 
 # Login Button
