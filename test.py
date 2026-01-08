@@ -5,9 +5,9 @@ st.title("Test Login App")
 
 # 🔑 Setup für Google OAuth
 credentials = {
-    "client_id": "100459304116183409380.apps.googleusercontent.com",
-    "client_secret": "DEIN_CLIENT_SECRET",
-    "redirect_uri": "http://localhost:8501"  # während Test lokal
+    "client_id": "REMOVED",
+    "client_secret": "REMOVED",
+    "redirect_uri": "https://pqw8l7hrekvttzngm8fz8k.streamlit.app"
 }
 
 # Authenticator initialisieren
